@@ -16,14 +16,13 @@ import {
 import Button from '../../components/Button/index';
 
 const Dashboard: React.FC = () => {
-  const [distance, setDistance] = useState('0');
+  const [distance, setDistance] = useState<number>();
 
   setTimeout(async () => {
     api.get('/distance').then(response => {
       setDistance(response.data);
     });
-    console.log('ping');
-  }, 1000);
+  }, 1050);
 
   useEffect(() => {
     async function tryConection() {

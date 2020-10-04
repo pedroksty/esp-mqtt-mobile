@@ -31,4 +31,5 @@ export const Distance = styled.Text`
   margin-top: 20px;
   color: #121214;
   font-size: 22px;
+  font-weight: bold;
 `;
