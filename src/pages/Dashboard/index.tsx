@@ -1,15 +1,30 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
 import api from '../../services/api';
 
 import logo from '../../assets/logo-ura.png';
 
-import { LogoImage, Container, SideContainer, StopButton } from './styles';
+import {
+  LogoImage,
+  Container,
+  SideContainer,
+  StopButton,
+  Distance
+} from './styles';
 
 import Button from '../../components/Button/index';
 
 const Dashboard: React.FC = () => {
+  const [distance, setDistance] = useState('0');
+
+  setTimeout(async () => {
+    api.get('/distance').then(response => {
+      setDistance(response.data);
+    });
+    console.log('ping');
+  }, 1000);
+
   useEffect(() => {
     async function tryConection() {
       try {
@@ -61,6 +76,7 @@ const Dashboard: React.FC = () => {
         <Button onPress={handleRight}>Direita</Button>
       </SideContainer>
       <StopButton onPress={handleStop}>Parar</StopButton>
+      <Distance>Distância do obstáculo: {distance} cm</Distance>
     </Container>
   );
 };

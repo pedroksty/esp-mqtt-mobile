@@ -26,3 +26,9 @@ export const SideContainer = styled.View`
 export const StopButton = styled(Button)`
   background: #cd2419;
 `;
+
+export const Distance = styled.Text`
+  margin-top: 20px;
+  color: #121214;
+  font-size: 22px;
+`;
